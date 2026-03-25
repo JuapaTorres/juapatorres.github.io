@@ -424,6 +424,33 @@
       opacity: 1; transform: translateY(0);
     }
 
+    /* --- BACK TO TOP BUTTON --- */
+    #backToTop {
+      display: none;
+      position: fixed;
+      bottom: 30px;
+      right: 30px;
+      z-index: 1000;
+      width: 50px;
+      height: 50px;
+      border: 1px solid var(--border);
+      outline: none;
+      background-color: var(--surface2);
+      color: var(--accent);
+      cursor: pointer;
+      border-radius: 12px;
+      font-size: 20px;
+      transition: all 0.3s ease;
+      backdrop-filter: blur(8px);
+      box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+    }
+
+    #backToTop:hover {
+      background-color: var(--accent);
+      color: #0a0a0f;
+      transform: translateY(-5px);
+    }
+
     /* --- RESPONSIVE --- */
     @media (max-width: 768px) {
       nav { padding: 16px 24px; }
@@ -713,10 +740,12 @@
 
   <!-- FOOTER -->
   <footer>
-    <p>© 2026 Juan-Pablo Torres Cid <span>·</span> Santiago de Chile</p>
+    <p>© 2025 Juan-Pablo Torres Cid <span>·</span> Santiago de Chile</p>
     <p>Hecho con <span>♥</span> y mucho código</p>
   </footer>
 
+  <button onclick="topFunction()" id="backToTop" title="Volver arriba">↑</button>
+  
   <script>
     // Scroll reveal
     const observer = new IntersectionObserver((entries) => {
@@ -728,6 +757,24 @@
       });
     }, { threshold: 0.12 });
     document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+    // Lógica del botón Back to Top
+    let mybutton = document.getElementById("backToTop");
+
+    window.onscroll = function() {
+      if (document.body.scrollTop > 300 || document.documentElement.scrollTop > 300) {
+        mybutton.style.display = "block";
+      } else {
+        mybutton.style.display = "none";
+      }
+    };
+
+    function topFunction() {
+      window.scrollTo({
+        top: 0,
+        behavior: 'smooth'
+      });
+    }
   </script>
 </body>
 </html>

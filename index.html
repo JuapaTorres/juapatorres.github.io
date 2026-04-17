@@ -8,9 +8,6 @@
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
-    /* ========================
-       TEMA OSCURO (por defecto)
-    ======================== */
     :root {
       --bg: #0a0a0f;
       --surface: #111118;
@@ -26,9 +23,6 @@
       --font-body: 'DM Sans', sans-serif;
     }
 
-    /* ========================
-       TEMA CLARO
-    ======================== */
     [data-theme="light"] {
       --bg: #f5f4f0;
       --surface: #ffffff;
@@ -41,9 +35,7 @@
       --card-hover: rgba(0,166,81,0.04);
       --nav-bg: rgba(245,244,240,0.85);
     }
-    [data-theme="light"] h1 .line2 {
-      -webkit-text-stroke: 1.5px rgba(0,0,0,0.18);
-    }
+    [data-theme="light"] h1 .line2 { -webkit-text-stroke: 1.5px rgba(0,0,0,0.18); }
     [data-theme="light"] .btn-primary { color: #fff; }
     [data-theme="light"] .tag { background: rgba(0,0,0,0.04); }
     [data-theme="light"] .tech-tag {
@@ -51,10 +43,7 @@
       border-color: rgba(0,166,81,0.2);
       color: #007a3d;
     }
-    [data-theme="light"] .project-year {
-      color: #dddcd8;
-      -webkit-text-stroke: 1px rgba(0,0,0,0.07);
-    }
+    [data-theme="light"] .project-year { color: #dddcd8; -webkit-text-stroke: 1px rgba(0,0,0,0.07); }
     [data-theme="light"] .contact-link-icon { background: rgba(0,0,0,0.05); }
     [data-theme="light"] .contact-link-icon svg { color: #111118 !important; }
 
@@ -70,77 +59,48 @@
       transition: background 0.3s, color 0.3s;
     }
 
-    /* --- NOISE OVERLAY --- */
     body::before {
       content: '';
-      position: fixed;
-      inset: 0;
+      position: fixed; inset: 0;
       background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='1'/%3E%3C/svg%3E");
-      opacity: 0.025;
-      pointer-events: none;
-      z-index: 999;
+      opacity: 0.025; pointer-events: none; z-index: 999;
     }
 
-    /* --- GLOW BG --- */
-    .bg-glow {
-      position: fixed;
-      width: 700px; height: 700px;
-      border-radius: 50%;
-      filter: blur(120px);
-      pointer-events: none;
-      z-index: 0;
-    }
+    .bg-glow { position: fixed; width: 700px; height: 700px; border-radius: 50%; filter: blur(120px); pointer-events: none; z-index: 0; }
     .bg-glow-1 { background: rgba(90,255,145,0.06); top: -200px; left: -200px; }
     .bg-glow-2 { background: rgba(56,212,255,0.05); bottom: -200px; right: -200px; }
 
-    /* --- NAV --- */
     nav {
-      position: fixed; top: 0; left: 0; right: 0;
-      z-index: 100;
+      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
       padding: 20px 60px;
       display: flex; justify-content: space-between; align-items: center;
-      background: var(--nav-bg);
-      backdrop-filter: blur(16px);
+      background: var(--nav-bg); backdrop-filter: blur(16px);
       border-bottom: 1px solid var(--border);
       transition: background 0.3s, border-color 0.3s;
     }
-    .nav-logo {
-      font-family: var(--font-head);
-      font-weight: 800; font-size: 18px; letter-spacing: -0.5px;
-      color: var(--text); text-decoration: none;
-    }
+    .nav-logo { font-family: var(--font-head); font-weight: 800; font-size: 18px; letter-spacing: -0.5px; color: var(--text); text-decoration: none; }
     .nav-logo span { color: var(--accent); }
     .nav-center { list-style: none; display: flex; gap: 36px; }
-    .nav-center a {
-      color: var(--muted); text-decoration: none;
-      font-size: 14px; font-weight: 400; letter-spacing: 0.3px;
-      transition: color 0.2s;
-    }
+    .nav-center a { color: var(--muted); text-decoration: none; font-size: 14px; font-weight: 400; letter-spacing: 0.3px; transition: color 0.2s; }
     .nav-center a:hover { color: var(--text); }
 
-    /* --- NAV CONTROLES (tema + idioma) --- */
     .nav-controls { display: flex; align-items: center; gap: 8px; }
-
     .nav-btn {
       display: inline-flex; align-items: center; gap: 5px;
       padding: 6px 12px; border-radius: 8px;
       border: 1px solid var(--border); background: transparent;
       color: var(--muted); font-family: var(--font-body);
       font-size: 13px; font-weight: 500; cursor: pointer;
-      transition: color 0.2s, border-color 0.2s;
-      white-space: nowrap;
+      transition: color 0.2s, border-color 0.2s; white-space: nowrap;
     }
     .nav-btn:hover { color: var(--text); border-color: var(--accent); }
     .nav-btn svg { width: 14px; height: 14px; flex-shrink: 0; }
 
-    /* Dropdown de tema */
     .theme-wrapper { position: relative; }
     .theme-menu {
-      display: none;
-      position: absolute; top: calc(100% + 8px); right: 0;
+      display: none; position: absolute; top: calc(100% + 8px); right: 0;
       background: var(--surface); border: 1px solid var(--border);
-      border-radius: 10px; overflow: hidden;
-      min-width: 148px; z-index: 200;
+      border-radius: 10px; overflow: hidden; min-width: 148px; z-index: 200;
       box-shadow: 0 8px 32px rgba(0,0,0,0.25);
     }
     .theme-menu.open { display: block; }
@@ -155,46 +115,35 @@
     .theme-opt.active { color: var(--accent); font-weight: 500; }
     .theme-opt svg { width: 14px; height: 14px; flex-shrink: 0; }
 
-    /* --- SECTIONS --- */
     section { position: relative; z-index: 1; }
 
-    /* --- HERO --- */
     #hero {
-      min-height: 100vh;
-      display: flex; flex-direction: column; justify-content: center;
-      padding: 120px 60px 80px;
-      max-width: 1100px; margin: 0 auto;
+      min-height: 100vh; display: flex; flex-direction: column; justify-content: center;
+      padding: 120px 60px 80px; max-width: 1100px; margin: 0 auto;
     }
     .hero-tag {
       display: inline-flex; align-items: center; gap: 8px;
       font-size: 13px; font-weight: 500; letter-spacing: 1px;
-      color: var(--accent); text-transform: uppercase;
-      margin-bottom: 28px;
+      color: var(--accent); text-transform: uppercase; margin-bottom: 28px;
       opacity: 0; animation: fadeUp 0.6s 0.2s forwards;
     }
     .hero-tag::before { content: ''; display: block; width: 28px; height: 1.5px; background: var(--accent); }
     h1 {
-      font-family: var(--font-head);
-      font-size: clamp(52px, 7vw, 96px); font-weight: 800;
+      font-family: var(--font-head); font-size: clamp(52px, 7vw, 96px); font-weight: 800;
       line-height: 0.95; letter-spacing: -3px; margin-bottom: 32px;
       opacity: 0; animation: fadeUp 0.7s 0.35s forwards;
     }
     h1 .line2 { display: block; -webkit-text-stroke: 1.5px rgba(255,255,255,0.35); color: transparent; }
     .hero-desc {
-      max-width: 520px; font-size: 17px; font-weight: 300;
-      color: var(--muted); margin-bottom: 48px;
+      max-width: 520px; font-size: 17px; font-weight: 300; color: var(--muted); margin-bottom: 48px;
       opacity: 0; animation: fadeUp 0.7s 0.5s forwards;
     }
     .hero-desc strong { color: var(--text); font-weight: 500; }
-    .hero-cta {
-      display: flex; gap: 16px; flex-wrap: wrap;
-      opacity: 0; animation: fadeUp 0.7s 0.65s forwards;
-    }
+    .hero-cta { display: flex; gap: 16px; flex-wrap: wrap; opacity: 0; animation: fadeUp 0.7s 0.65s forwards; }
     .btn {
       display: inline-flex; align-items: center; gap: 8px;
-      padding: 14px 28px; border-radius: 8px;
-      font-family: var(--font-body); font-size: 15px; font-weight: 500;
-      text-decoration: none; transition: all 0.2s; cursor: pointer; border: none;
+      padding: 14px 28px; border-radius: 8px; font-family: var(--font-body);
+      font-size: 15px; font-weight: 500; text-decoration: none; transition: all 0.2s; cursor: pointer; border: none;
     }
     .btn-primary { background: var(--accent); color: #0a0a0f; }
     .btn-primary:hover { background: #7affa8; transform: translateY(-2px); }
@@ -208,7 +157,6 @@
     }
     .hero-scroll::after { content: ''; display: block; width: 40px; height: 1px; background: var(--muted); }
 
-    /* --- ABOUT --- */
     #sobre-mi { padding: 120px 60px; max-width: 1100px; margin: 0 auto; }
     .section-label {
       font-size: 12px; letter-spacing: 2px; text-transform: uppercase;
@@ -217,8 +165,7 @@
     }
     .section-label::before { content: ''; display: block; width: 20px; height: 1.5px; background: var(--accent); }
     h2 {
-      font-family: var(--font-head);
-      font-size: clamp(32px, 4vw, 52px); font-weight: 700;
+      font-family: var(--font-head); font-size: clamp(32px, 4vw, 52px); font-weight: 700;
       letter-spacing: -1.5px; line-height: 1.1; margin-bottom: 48px;
     }
     .about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: start; }
@@ -228,21 +175,14 @@
       background: var(--surface); border: 1px solid var(--border);
       border-radius: 16px; padding: 32px; transition: background 0.3s, border-color 0.3s;
     }
-    .about-card-title {
-      font-family: var(--font-head); font-size: 13px; letter-spacing: 1.5px;
-      text-transform: uppercase; color: var(--muted); margin-bottom: 20px;
-    }
-    .info-row {
-      display: flex; justify-content: space-between; align-items: center;
-      padding: 14px 0; border-bottom: 1px solid var(--border); font-size: 14px;
-    }
+    .about-card-title { font-family: var(--font-head); font-size: 13px; letter-spacing: 1.5px; text-transform: uppercase; color: var(--muted); margin-bottom: 20px; }
+    .info-row { display: flex; justify-content: space-between; align-items: center; padding: 14px 0; border-bottom: 1px solid var(--border); font-size: 14px; }
     .info-row:last-child { border-bottom: none; }
     .info-label { color: var(--muted); }
     .info-value { color: var(--text); font-weight: 500; text-align: right; }
     .info-value a { color: var(--accent2); text-decoration: none; }
     .info-value a:hover { text-decoration: underline; }
 
-    /* --- SKILLS --- */
     #habilidades {
       padding: 120px 60px; background: var(--surface);
       border-top: 1px solid var(--border); border-bottom: 1px solid var(--border);
@@ -250,23 +190,12 @@
     }
     .skills-inner { max-width: 1100px; margin: 0 auto; }
     .skills-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 20px; }
-    .skill-group {
-      background: var(--surface2); border: 1px solid var(--border);
-      border-radius: 12px; padding: 24px; transition: border-color 0.2s, background 0.2s;
-    }
+    .skill-group { background: var(--surface2); border: 1px solid var(--border); border-radius: 12px; padding: 24px; transition: border-color 0.2s, background 0.2s; }
     .skill-group:hover { border-color: rgba(90,255,145,0.2); background: var(--card-hover); }
-    .skill-group-title {
-      font-family: var(--font-head); font-size: 13px; font-weight: 600;
-      letter-spacing: 1px; text-transform: uppercase; color: var(--accent); margin-bottom: 16px;
-    }
+    .skill-group-title { font-family: var(--font-head); font-size: 13px; font-weight: 600; letter-spacing: 1px; text-transform: uppercase; color: var(--accent); margin-bottom: 16px; }
     .skill-tags { display: flex; flex-wrap: wrap; gap: 8px; }
-    .tag {
-      display: inline-block; padding: 6px 12px;
-      background: rgba(255,255,255,0.05); border: 1px solid var(--border);
-      border-radius: 6px; font-size: 13px; color: var(--text); font-weight: 400;
-    }
+    .tag { display: inline-block; padding: 6px 12px; background: rgba(255,255,255,0.05); border: 1px solid var(--border); border-radius: 6px; font-size: 13px; color: var(--text); font-weight: 400; }
 
-    /* --- PROJECTS --- */
     #proyectos { padding: 120px 60px; max-width: 1100px; margin: 0 auto; }
     .projects-grid { display: grid; gap: 24px; }
     .project-card {
@@ -284,19 +213,12 @@
     .project-features li { font-size: 14px; color: var(--muted); font-weight: 300; padding: 4px 0; padding-left: 16px; position: relative; }
     .project-features li::before { content: '→'; position: absolute; left: 0; color: var(--accent); font-size: 12px; }
     .project-tech { display: flex; flex-wrap: wrap; gap: 8px; }
-    .tech-tag {
-      padding: 5px 12px; border-radius: 100px; font-size: 12px; font-weight: 500;
-      background: rgba(90,255,145,0.08); border: 1px solid rgba(90,255,145,0.2); color: var(--accent);
-    }
+    .tech-tag { padding: 5px 12px; border-radius: 100px; font-size: 12px; font-weight: 500; background: rgba(90,255,145,0.08); border: 1px solid rgba(90,255,145,0.2); color: var(--accent); }
     .project-meta { display: flex; flex-direction: column; align-items: flex-end; gap: 12px; }
-    .project-year {
-      font-family: var(--font-head); font-size: 48px; font-weight: 800;
-      color: var(--surface2); line-height: 1; letter-spacing: -2px; -webkit-text-stroke: 1px var(--border);
-    }
+    .project-year { font-family: var(--font-head); font-size: 48px; font-weight: 800; color: var(--surface2); line-height: 1; letter-spacing: -2px; -webkit-text-stroke: 1px var(--border); }
     .project-link { display: inline-flex; align-items: center; gap: 6px; font-size: 13px; color: var(--accent2); text-decoration: none; font-weight: 500; transition: gap 0.2s; }
     .project-link:hover { gap: 10px; }
 
-    /* --- CONTACT --- */
     #contacto { padding: 120px 60px; background: var(--surface); border-top: 1px solid var(--border); transition: background 0.3s; }
     .contact-inner { max-width: 1100px; margin: 0 auto; }
     .contact-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: center; }
@@ -310,16 +232,11 @@
       transition: border-color 0.2s, background 0.2s, transform 0.2s;
     }
     .contact-link:hover { border-color: rgba(90,255,145,0.25); background: var(--card-hover); transform: translateX(4px); }
-    .contact-link-icon {
-      width: 40px; height: 40px; border-radius: 8px;
-      background: rgba(255,255,255,0.05);
-      display: flex; align-items: center; justify-content: center; flex-shrink: 0;
-    }
+    .contact-link-icon { width: 40px; height: 40px; border-radius: 8px; background: rgba(255,255,255,0.05); display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
     .contact-link-icon svg { width: 18px; height: 18px; }
     .contact-link-label { font-size: 12px; color: var(--muted); text-transform: uppercase; letter-spacing: 1px; }
     .contact-link-value { font-size: 14px; color: var(--text); font-weight: 500; }
 
-    /* --- FOOTER --- */
     footer {
       padding: 32px 60px; border-top: 1px solid var(--border);
       display: flex; justify-content: space-between; align-items: center;
@@ -328,32 +245,20 @@
     footer p { font-size: 13px; color: var(--muted); }
     footer span { color: var(--accent); }
 
-    /* --- BACK TO TOP --- */
     #backToTop {
-      display: none;
-      position: fixed;
-      bottom: 80px; /* subido para no tapar el footer */
-      right: 30px;
-      z-index: 1000;
-      width: 50px; height: 50px;
-      border: 1px solid var(--border); outline: none;
+      display: none; position: fixed; bottom: 80px; right: 30px; z-index: 1000;
+      width: 50px; height: 50px; border: 1px solid var(--border); outline: none;
       background-color: var(--surface2); color: var(--accent);
       cursor: pointer; border-radius: 12px; font-size: 20px;
-      transition: all 0.3s ease;
-      backdrop-filter: blur(8px);
+      transition: all 0.3s ease; backdrop-filter: blur(8px);
       box-shadow: 0 10px 30px rgba(0,0,0,0.3);
     }
     #backToTop:hover { background-color: var(--accent); color: #0a0a0f; transform: translateY(-5px); }
 
-    /* --- ANIMATIONS --- */
-    @keyframes fadeUp {
-      from { opacity: 0; transform: translateY(24px); }
-      to   { opacity: 1; transform: translateY(0); }
-    }
+    @keyframes fadeUp { from { opacity: 0; transform: translateY(24px); } to { opacity: 1; transform: translateY(0); } }
     .reveal { opacity: 0; transform: translateY(30px); transition: opacity 0.7s ease, transform 0.7s ease; }
     .reveal.visible { opacity: 1; transform: translateY(0); }
 
-    /* --- RESPONSIVE --- */
     @media (max-width: 768px) {
       nav { padding: 16px 24px; }
       .nav-center { display: none; }
@@ -384,8 +289,6 @@
       <li><a href="#contacto"    data-es="Contacto"    data-en="Contact">Contacto</a></li>
     </ul>
     <div class="nav-controls">
-
-      <!-- Selector de idioma -->
       <button class="nav-btn" onclick="toggleLang()" title="Switch language">
         <svg fill="none" viewBox="0 0 24 24" stroke="currentColor">
           <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"
@@ -393,8 +296,6 @@
         </svg>
         <span class="btn-label" id="langLabel">EN</span>
       </button>
-
-      <!-- Selector de tema -->
       <div class="theme-wrapper">
         <button class="nav-btn" onclick="toggleThemeMenu()" title="Change theme">
           <svg id="themeIcon" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -424,7 +325,6 @@
           </button>
         </div>
       </div>
-
     </div>
   </nav>
 
@@ -467,11 +367,11 @@
       <div class="about-card">
         <p class="about-card-title" data-es="Info rápida" data-en="Quick info">Info rápida</p>
         <div class="info-row">
-          <span class="info-label" data-es="Ubicación"      data-en="Location">Ubicación</span>
+          <span class="info-label" data-es="Ubicación" data-en="Location">Ubicación</span>
           <span class="info-value">Santiago, Chile 🇨🇱</span>
         </div>
         <div class="info-row">
-          <span class="info-label" data-es="Formación"      data-en="Education">Formación</span>
+          <span class="info-label" data-es="Formación" data-en="Education">Formación</span>
           <span class="info-value" data-es="Bootcamp Full Stack" data-en="Full Stack Bootcamp">Bootcamp Full Stack</span>
         </div>
         <div class="info-row">
@@ -517,7 +417,7 @@
         <div class="skill-group reveal">
           <p class="skill-group-title" data-es="Bases de datos" data-en="Databases">Bases de datos</p>
           <div class="skill-tags">
-            <span class="tag">MySQL</span><span class="tag">JSON</span><span class="tag">CSV</span>
+            <span class="tag">MySQL</span><span class="tag">SQLite</span><span class="tag">JSON</span><span class="tag">CSV</span>
           </div>
         </div>
         <div class="skill-group reveal">
@@ -537,7 +437,7 @@
     <h2 data-es="Lo que he construido" data-en="What I've built">Lo que he construido</h2>
     <div class="projects-grid">
 
-      <!-- Proyecto 1: GIC -->
+      <!-- Proyecto 1: SGI Clientes — URL corregida -->
       <div class="project-card reveal">
         <div>
           <p class="project-num">01 / Bootcamp · Python</p>
@@ -563,12 +463,12 @@
         </div>
         <div class="project-meta">
           <p class="project-year">GIC</p>
-          <a href="https://github.com/JuapaTorres/gestor-inteligente-clientes" class="project-link" target="_blank"
+          <a href="https://github.com/JuapaTorres/SGI_clientes" class="project-link" target="_blank"
              data-es="Ver código →" data-en="View code →">Ver código →</a>
         </div>
       </div>
 
-      <!-- Proyecto 2: Alke Wallet -->
+      <!-- Proyecto 2: Alke Wallet Frontend — URL corregida -->
       <div class="project-card reveal">
         <div>
           <p class="project-num">02 / Bootcamp · Web</p>
@@ -594,7 +494,40 @@
         </div>
         <div class="project-meta">
           <p class="project-year">AW</p>
-          <a href="https://github.com/JuapaTorres/alke-wallet" class="project-link" target="_blank"
+          <a href="https://github.com/JuapaTorres/alke-wallet-final" class="project-link" target="_blank"
+             data-es="Ver código →" data-en="View code →">Ver código →</a>
+        </div>
+      </div>
+
+      <!-- Proyecto 3: Alke Wallet Django — NUEVO -->
+      <div class="project-card reveal">
+        <div>
+          <p class="project-num">03 / Bootcamp · Django</p>
+          <h3 class="project-title" data-es="Alke Wallet — Django" data-en="Alke Wallet — Django">Alke Wallet — Django</h3>
+          <p class="project-subtitle"
+             data-es="Billetera digital full stack con backend en Django"
+             data-en="Full stack digital wallet with Django backend">Billetera digital full stack con backend en Django</p>
+          <p class="project-desc"
+             data-es="Evolución del proyecto Alke Wallet hacia una aplicación web full stack construida con Django. Implementa autenticación de usuarios, modelos relacionales (OneToOne, ForeignKey, ManyToMany), operaciones CRUD completas, consultas ORM avanzadas y SQL raw, además de un dashboard con reportes financieros."
+             data-en="Evolution of the Alke Wallet project into a full stack web application built with Django. Implements user authentication, relational models (OneToOne, ForeignKey, ManyToMany), full CRUD operations, advanced ORM queries and raw SQL, plus a dashboard with financial reports.">
+            Evolución del proyecto Alke Wallet hacia una aplicación web full stack construida con Django. Implementa autenticación de usuarios, modelos relacionales (OneToOne, ForeignKey, ManyToMany), operaciones CRUD completas, consultas ORM avanzadas y SQL raw, además de un dashboard con reportes financieros.
+          </p>
+          <ul class="project-features">
+            <li data-es="Autenticación completa con LoginRequiredMixin y tokens CSRF"    data-en="Full authentication with LoginRequiredMixin and CSRF tokens">Autenticación completa con LoginRequiredMixin y tokens CSRF</li>
+            <li data-es="Modelos relacionales: Cliente, Cuenta, Transacción y Beneficiario" data-en="Relational models: Client, Account, Transaction and Beneficiary">Modelos relacionales: Cliente, Cuenta, Transacción y Beneficiario</li>
+            <li data-es="Consultas ORM avanzadas: filter, exclude, annotate, aggregate" data-en="Advanced ORM queries: filter, exclude, annotate, aggregate">Consultas ORM avanzadas: filter, exclude, annotate, aggregate</li>
+            <li data-es="Dashboard con reportes, saldos y resumen de transacciones"     data-en="Dashboard with reports, balances and transaction summary">Dashboard con reportes, saldos y resumen de transacciones</li>
+            <li data-es="Configuración dual: SQLite (desarrollo) y PostgreSQL (producción)" data-en="Dual config: SQLite (development) and PostgreSQL (production)">Configuración dual: SQLite (desarrollo) y PostgreSQL (producción)</li>
+          </ul>
+          <div class="project-tech">
+            <span class="tech-tag">Python</span><span class="tech-tag">Django</span>
+            <span class="tech-tag">SQLite</span><span class="tech-tag">PostgreSQL</span>
+            <span class="tech-tag">Bootstrap 5</span><span class="tech-tag">ORM</span>
+          </div>
+        </div>
+        <div class="project-meta">
+          <p class="project-year">M7</p>
+          <a href="https://github.com/JuapaTorres/ProyectoM7" class="project-link" target="_blank"
              data-es="Ver código →" data-en="View code →">Ver código →</a>
         </div>
       </div>
@@ -676,9 +609,6 @@
   <button onclick="topFunction()" id="backToTop" title="Volver arriba">↑</button>
 
   <script>
-    /* =====================
-       SCROLL REVEAL
-    ===================== */
     const observer = new IntersectionObserver((entries) => {
       entries.forEach(e => {
         if (e.isIntersecting) { e.target.classList.add('visible'); observer.unobserve(e.target); }
@@ -686,20 +616,12 @@
     }, { threshold: 0.12 });
     document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
 
-    /* =====================
-       BACK TO TOP
-    ===================== */
     const mybutton = document.getElementById("backToTop");
     window.addEventListener('scroll', () => {
       mybutton.style.display = (document.documentElement.scrollTop > 300) ? "block" : "none";
     });
-    function topFunction() {
-      window.scrollTo({ top: 0, behavior: 'smooth' });
-    }
+    function topFunction() { window.scrollTo({ top: 0, behavior: 'smooth' }); }
 
-    /* =====================
-       TEMA (claro / oscuro / sistema)
-    ===================== */
     const themeMenu  = document.getElementById('themeMenu');
     const themeLabel = document.getElementById('themeLabel');
     const themeIcon  = document.getElementById('themeIcon');
@@ -733,12 +655,10 @@
     }
 
     function toggleThemeMenu() { themeMenu.classList.toggle('open'); }
-
     document.addEventListener('click', (e) => {
       if (!e.target.closest('.theme-wrapper')) themeMenu.classList.remove('open');
     });
 
-    // Inicializar tema
     (function() {
       const saved = localStorage.getItem('theme') || 'system';
       applyTheme(saved);
@@ -752,22 +672,16 @@
       if (localStorage.getItem('theme') === 'system') applyTheme('system');
     });
 
-    /* =====================
-       IDIOMA (ES / EN)
-    ===================== */
     let currentLang = localStorage.getItem('lang') || 'es';
 
     function applyLang(lang) {
       document.documentElement.lang = lang;
       document.getElementById('langLabel').textContent = lang === 'es' ? 'EN' : 'ES';
-
       document.querySelectorAll('[data-es][data-en]').forEach(el => {
         const val = el.getAttribute('data-' + lang);
         if (!val) return;
         if (val.includes('<')) { el.innerHTML = val; } else { el.textContent = val; }
       });
-
-      // Actualizar label de tema con el nuevo idioma
       const savedTheme = localStorage.getItem('theme') || 'system';
       themeLabel.textContent = THEME_LABELS[savedTheme][lang];
     }
@@ -778,7 +692,6 @@
       applyLang(currentLang);
     }
 
-    // Inicializar idioma
     applyLang(currentLang);
   </script>
 </body>
